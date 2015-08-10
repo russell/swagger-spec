@@ -246,6 +246,20 @@
           },
           "uniqueItems": true
         },
+        "method": {
+          "type": "string",
+          "description": "The HTTP method.",
+          "enum": [
+            "get",
+            "put",
+            "post",
+            "patch",
+            "delete",
+            "options",
+            "head",
+            "copy"
+          ]
+        },
         "summary": {
           "type": "string",
           "description": "A brief summary of the operation."
@@ -288,41 +302,9 @@
       }
     },
     "pathItem": {
-      "type": "object",
-      "additionalProperties": false,
-      "patternProperties": {
-        "^x-": {
-          "$ref": "#/definitions/vendorExtension"
-        }
-      },
-      "properties": {
-        "$ref": {
-          "type": "string"
-        },
-        "get": {
-          "$ref": "#/definitions/operation"
-        },
-        "put": {
-          "$ref": "#/definitions/operation"
-        },
-        "post": {
-          "$ref": "#/definitions/operation"
-        },
-        "delete": {
-          "$ref": "#/definitions/operation"
-        },
-        "options": {
-          "$ref": "#/definitions/operation"
-        },
-        "head": {
-          "$ref": "#/definitions/operation"
-        },
-        "patch": {
-          "$ref": "#/definitions/operation"
-        },
-        "parameters": {
-          "$ref": "#/definitions/parametersList"
-        }
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/operation"
       }
     },
     "responses": {
